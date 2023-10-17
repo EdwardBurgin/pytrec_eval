@@ -1,5 +1,10 @@
 pytrec_eval
 ===========
+Includes SSH fix in setup.py, for corporate servers where there is only one proxy.
+
+Install via:
+
+ 	python setup.py install
 
 pytrec\_eval is a Python interface to TREC's evaluation tool, [trec\_eval](https://github.com/usnistgov/trec_eval). It is an attempt to stop the cultivation of custom implementations of Information Retrieval evaluation measures for the Python programming language.
 
