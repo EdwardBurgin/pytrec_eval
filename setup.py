@@ -4,6 +4,12 @@ from setuptools import setup, Extension
 import os
 import sys
 import tempfile
+import ssl
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+
 
 REMOTE_TREC_EVAL_URI = 'https://github.com/usnistgov/trec_eval/archive/v9.0.8.tar.gz'
 
@@ -24,7 +30,7 @@ with tempfile.TemporaryDirectory() as tmp_dir:
         import io
         import urllib.request
 
-        response = urllib.request.urlopen(REMOTE_TREC_EVAL_URI)
+        response = urllib.request.urlopen(REMOTE_TREC_EVAL_URI, context = ctx)
         mmap_f = io.BytesIO(response.read())
 
         if REMOTE_TREC_EVAL_URI.endswith('.zip'):
